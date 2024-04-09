@@ -2,6 +2,8 @@ import subprocess
 import os
 import platform
 import sys
+import time
+
 
 class IperfHost:
     def __init__(self, port=5201, udp=False, output_file='output'):
@@ -10,6 +12,7 @@ class IperfHost:
         self.process = None
         self.iperf_path = self.find_iperf_path()
         self.output_file = output_file
+        self.measurement_duration = measurement_duration
 
     def find_iperf_path(self):
         # Check operating system and set iperf path accordingly
@@ -36,7 +39,7 @@ class IperfHost:
             print("Server is already running.")
             return
 
-        cmd = [self.iperf_path, '-s', '-p', str(self.port),'-V', '-f', 'M']
+        cmd = [self.iperf_path, '-s', '-p', str(self.port),'-V', '-f', 'M', '-J']
         if self.udp:
             cmd.append('-u')
         cmd.append('--logfile')
@@ -45,6 +48,9 @@ class IperfHost:
             self.process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             print("Server started successfully.")
             print("Command line inputs:", ' '.join(cmd))
+            # Wait for measurement duration and then stop the client
+            # time.sleep(self.measurement_duration+2)
+            # self.stop_server()
         except FileNotFoundError:
             print("Error: iperf not found. Please make sure iperf is installed and in your system PATH.")
 
@@ -62,7 +68,7 @@ class IperfHost:
             return "Server is not running."
 
 if __name__ == "__main__":
-    output_file_name = 'host'
+    output_file_name = 'hostJs'
     if len(sys.argv) > 1:
         output_file_name = sys.argv[1]
     iperf_host = IperfHost(output_file=output_file_name)
