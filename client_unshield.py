@@ -3,10 +3,11 @@ import os
 import platform
 import sys
 import time
+import datetime
 
 
 class IperfClient:
-    def __init__(self, host_ip, host_port=5201, udp=False, json=False, output_file='output', measurement_duration=30):
+    def __init__(self, host_ip, host_port=5201, udp=False, json=False, output_file='output', measurement_duration=60):
         self.host_ip = host_ip
         self.host_port = host_port
         self.udp = udp
@@ -69,11 +70,23 @@ class IperfClient:
             return "Client is not running."
 
 if __name__ == "__main__":
-    output_file_name = 'clientJs'
+    # output_file_name = 'clientJs'
+    output_file_name = 'db0/f24-ni-ch1-unshield'
+
     if len(sys.argv) > 1:
         output_file_name = sys.argv[1]
 
-    host_ip = 'localhost'
-    iperf_client = IperfClient(host_ip, output_file=output_file_name)
-    iperf_client.start_client()
-    print(iperf_client.get_client_status())
+    # host_ip = 'localhost'
+    host_ip = '192.168.0.104'
+
+    schedule_time = "19:07"
+    repeat_count = 100
+    while True:
+        current_time = datetime.datetime.now().strftime("%H:%M")
+        if current_time == schedule_time:
+            iperf_client = IperfClient(host_ip, output_file=output_file_name)
+            iperf_client.start_client()
+            print(iperf_client.get_client_status())
+            break
+        else:
+            time.sleep(1)
