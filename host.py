@@ -7,12 +7,13 @@ import datetime
 
 
 class IperfHost:
-    def __init__(self, port=5201, udp=False, output_file='output'):
+    def __init__(self, port=5201, udp=False, interval = 1,output_file='output'):
         self.port = port
         self.udp = udp
         self.process = None
         self.iperf_path = self.find_iperf_path()
         self.output_file = output_file
+        self.interval = interval
 
     def find_iperf_path(self):
         # Check operating system and set iperf path accordingly
@@ -43,7 +44,7 @@ class IperfHost:
             return
 
         cmd = [self.iperf_path, '-s', '-p',
-               str(self.port), '-f', 'M', '-J']
+               str(self.port), '-i', str(self.interval), '-J']
         if self.udp:
             cmd.append('-u')
         cmd.append('--logfile')
