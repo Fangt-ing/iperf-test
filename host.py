@@ -19,6 +19,8 @@ class IperfHost:
         iperf_executable = 'iperf3'
         if platform.system() == 'Windows':
             iperf_executable = 'iperf3.exe'
+        elif platform.system() == 'Linux':
+            iperf_executable = 'iperf3'
         # Search for iperf3.exe in subfolders
         iperf_path = None
         for root, dirs, files in os.walk('.'):
@@ -80,8 +82,8 @@ if __name__ == "__main__":
         output_file_name = sys.argv[1]
 
     # Replace 'script.py' with the name of the Python script you want to run
-    schedule_time = "19:06"
-    repeat_count = 100
+    schedule_time = "22:02"
+
     while True:
         current_time = datetime.datetime.now().strftime("%H:%M")
         if current_time == schedule_time:
