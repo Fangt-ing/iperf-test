@@ -43,7 +43,7 @@ class IperfHost:
             return
 
         cmd = [self.iperf_path, '-s', '-p',
-               str(self.port), '-V', '-f', 'M', '-J']
+               str(self.port), '-f', 'M', '-J']
         if self.udp:
             cmd.append('-u')
         cmd.append('--logfile')
