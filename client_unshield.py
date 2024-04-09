@@ -7,7 +7,7 @@ import datetime
 
 
 class IperfClient:
-    def __init__(self, host_ip, host_port=5201, udp=False, json=False, output_file='output', measurement_duration=60):
+    def __init__(self, host_ip, host_port=5201, udp=False, json=False, output_file='output', measurement_duration=160):
         self.host_ip = host_ip
         self.host_port = host_port
         self.udp = udp
@@ -79,8 +79,7 @@ if __name__ == "__main__":
     # host_ip = 'localhost'
     host_ip = '192.168.0.104'
 
-    schedule_time = "19:07"
-    repeat_count = 100
+    schedule_time = "19:29"    
     while True:
         current_time = datetime.datetime.now().strftime("%H:%M")
         if current_time == schedule_time:
