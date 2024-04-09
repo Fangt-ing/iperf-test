@@ -46,7 +46,7 @@ class IperfClient:
         cmd.append('-t')
         cmd.append(str(self.measurement_duration))  # Set measurement duration
         cmd.append('--logfile')
-        cmd.append(f'output/{self.output_file}.log')
+        cmd.append(f'output/{self.output_file}.json')
         # cmd.append(f'--get-server-output')
         try:
             self.process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)

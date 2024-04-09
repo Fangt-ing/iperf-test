@@ -47,7 +47,7 @@ class IperfHost:
         if self.udp:
             cmd.append('-u')
         cmd.append('--logfile')
-        cmd.append(f'output/{self.output_file}.log')
+        cmd.append(f'output/{self.output_file}.json')
         try:
             self.process = subprocess.Popen(
                 cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
