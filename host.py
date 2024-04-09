@@ -19,6 +19,8 @@ class IperfHost:
         iperf_executable = 'iperf3'
         if platform.system() == 'Windows':
             iperf_executable = 'iperf3.exe'
+        elif platform.system() == 'Linux':
+            iperf_executable = 'iperf3'
         # Search for iperf3.exe in subfolders
         iperf_path = None
         for root, dirs, files in os.walk('.'):
