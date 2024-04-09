@@ -40,7 +40,7 @@ class IperfClient:
             print("Error: iperf not found. Please make sure iperf is installed and in your system PATH.")
             return
 
-        cmd = [self.iperf_path, '-c', self.host_ip, '-p', str(self.host_port), '-V', '-J', '-R']
+        cmd = [self.iperf_path, '-c', self.host_ip, '-p', str(self.host_port), '-J', '-R']
         if self.udp:
             cmd.append('-u')
         cmd.append('-t')
