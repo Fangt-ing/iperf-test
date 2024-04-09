@@ -22,6 +22,8 @@ class IperfClient:
         iperf_executable = 'iperf3'
         if platform.system() == 'Windows':
             iperf_executable = 'iperf3.exe'
+            elif platform.system() == 'Linux':
+            iperf_executable = 'iperf3'
         # Search for iperf3.exe in subfolders
         iperf_path = None
         for root, dirs, files in os.walk('.'):
@@ -79,7 +81,7 @@ if __name__ == "__main__":
     # host_ip = 'localhost'
     host_ip = '192.168.0.104'
 
-    schedule_time = "19:29"    
+    schedule_time = "19:29"
     while True:
         current_time = datetime.datetime.now().strftime("%H:%M")
         if current_time == schedule_time:
