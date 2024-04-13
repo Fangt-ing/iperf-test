@@ -4,7 +4,7 @@ import datetime
 
 
 def start_iperf_server(port):
-    cmd = ['iperf3', '-s', '-p', str(port)]
+    cmd = ['iperf3', '-s', '-V','-p', str(port)]
     subprocess.Popen(cmd)
 
 

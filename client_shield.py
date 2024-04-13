@@ -78,7 +78,8 @@ class IperfClient:
             return "Client is not running."
 
 if __name__ == "__main__":
-    output_file_name = 'db0/f24-ni-ch1-shield'
+    # output_file_name = 'db0/f24-ni-ch1-shield'
+    output_file_name = 'db0/f24-coi-ch1-shield'
 
     if len(sys.argv) > 1:
         output_file_name = sys.argv[1]
