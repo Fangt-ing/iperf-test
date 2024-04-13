@@ -1,14 +1,25 @@
 import subprocess
 import time
+import datetime
+
 
 def start_iperf_server(port):
     cmd = ['iperf3', '-s', '-p', str(port)]
     subprocess.Popen(cmd)
 
+
 if __name__ == "__main__":
 
-    start_iperf_server(5201)
-    start_iperf_server(5202)
+    schedule_time = "16:58"
 
-    # Add a delay to ensure the servers have enough time to start
-    time.sleep(2)
+    while True:
+        current_time = datetime.datetime.now().strftime("%H:%M")
+        if current_time == schedule_time:
+            start_server = True
+            break
+        else:
+            time.sleep(1)
+
+    if start_server:
+        start_iperf_server(5201)
+        start_iperf_server(5202)
