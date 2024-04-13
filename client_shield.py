@@ -86,7 +86,7 @@ if __name__ == "__main__":
     # host_ip = 'localhost'
     host_ip = '192.168.0.104'
 
-    schedule_time = "14:30"
+    schedule_time = "14:40"
     while True:
         current_time = datetime.datetime.now().strftime("%H:%M")
         if current_time == schedule_time:
