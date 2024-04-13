@@ -7,12 +7,13 @@ import datetime
 
 
 class IperfHost:
-    def __init__(self, port=5201, udp=False, output_file='output'):
+    def __init__(self, port=5201, udp=False, interval = 1,output_file='output'):
         self.port = port
         self.udp = udp
         self.process = None
         self.iperf_path = self.find_iperf_path()
         self.output_file = output_file
+        self.interval = interval
 
     def find_iperf_path(self):
         # Check operating system and set iperf path accordingly
@@ -20,7 +21,7 @@ class IperfHost:
         if platform.system() == 'Windows':
             iperf_executable = 'iperf3.exe'
         elif platform.system() == 'Linux':
-            iperf_executable = 'iperf3'
+            return iperf_executable
         # Search for iperf3.exe in subfolders
         iperf_path = None
         for root, dirs, files in os.walk('.'):
@@ -43,11 +44,11 @@ class IperfHost:
             return
 
         cmd = [self.iperf_path, '-s', '-p',
-               str(self.port), '-V', '-f', 'M', '-J']
+               str(self.port), '-i', str(self.interval), '-J']
         if self.udp:
             cmd.append('-u')
         cmd.append('--logfile')
-        cmd.append(f'output/{self.output_file}.log')
+        cmd.append(f'output/{self.output_file}.json')
         try:
             self.process = subprocess.Popen(
                 cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -82,7 +83,7 @@ if __name__ == "__main__":
         output_file_name = sys.argv[1]
 
     # Replace 'script.py' with the name of the Python script you want to run
-    schedule_time = "22:02"
+    schedule_time = "11:37"
 
     while True:
         current_time = datetime.datetime.now().strftime("%H:%M")
