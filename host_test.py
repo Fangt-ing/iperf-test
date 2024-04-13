@@ -44,7 +44,7 @@ class IperfHost:
             return "Server is not running."
 
 
-if __name__ == "__main__":
+def main():
     # output_file_name = 'hostJs'
     output_file_name = 'db0/f24-ni-ch1-host'
 
@@ -52,7 +52,7 @@ if __name__ == "__main__":
         output_file_name = sys.argv[1]
 
     # Replace 'script.py' with the name of the Python script you want to run
-    schedule_time = "15:35"
+    schedule_time = "15:51"
 
     while True:
         current_time = datetime.datetime.now().strftime("%H:%M")
