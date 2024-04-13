@@ -84,7 +84,7 @@ if __name__ == "__main__":
         output_file_name = sys.argv[1]
 
     # host_ip = 'localhost'
-    host_ip = '192.168.31.104'
+    host_ip = '192.168.0.104'
 
     schedule_time = "11:38"
     while True:
