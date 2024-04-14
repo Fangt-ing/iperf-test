@@ -91,11 +91,12 @@ if __name__ == "__main__":
     while True:
         current_time = datetime.datetime.now().strftime("%H:%M")
         if current_time == schedule_time:
-            iperf_client = IperfClient(host_ip, output_file=output_file_name)
+            iperf_client = IperfClient(host_ip, output_file=output_file_name+str("-download"))
             iperf_client.start_client()
             print(iperf_client.get_client_status())
+            
             print("--------------------\n")
-            iperf_client = IperfClient(host_ip, upload=True,output_file=output_file_name)
+            iperf_client = IperfClient(host_ip, upload=True,output_file=output_file_name+str("-upload"))
             iperf_client.start_client()
             print(iperf_client.get_client_status())
             break
