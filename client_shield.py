@@ -79,7 +79,8 @@ class IperfClient:
 
 if __name__ == "__main__":
     # output_file_name = 'db0/f24-ni-ch1-shield'
-    output_file_name = 'db0/f24-coi-ch1-shield'
+    # output_file_name = 'db0/f24-coi-ch1-shield'
+    output_file_name = 'db0/f24-aci-ch1-shield'
 
     if len(sys.argv) > 1:
         output_file_name = sys.argv[1]
@@ -87,14 +88,14 @@ if __name__ == "__main__":
     # host_ip = 'localhost'
     host_ip = '192.168.0.104'
 
-    schedule_time = "18:18"
+    schedule_time = "21:12"
     while True:
         current_time = datetime.datetime.now().strftime("%H:%M")
         if current_time == schedule_time:
             iperf_client = IperfClient(host_ip, output_file=output_file_name+str("-download"))
             iperf_client.start_client()
             print(iperf_client.get_client_status())
-            
+
             print("--------------------\n")
             iperf_client = IperfClient(host_ip, upload=True,output_file=output_file_name+str("-upload"))
             iperf_client.start_client()
