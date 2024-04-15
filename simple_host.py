@@ -10,7 +10,7 @@ def start_iperf_server(port):
 
 if __name__ == "__main__":
 
-    schedule_time = "16:58"
+    schedule_time = "21:11"
 
     while True:
         current_time = datetime.datetime.now().strftime("%H:%M")
