@@ -1,0 +1,11 @@
+{
+	"start":	{
+		"connected":	[],
+		"version":	"iperf 3.9",
+		"system_info":	"Linux raspberrypi 6.6.26-v7+ #1754 SMP Thu Apr 11 14:45:02 BST 2024 armv7l"
+	},
+	"intervals":	[],
+	"end":	{
+	}
+}
+iperf3: error - the server is busy running a test. try again later
