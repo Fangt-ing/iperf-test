@@ -79,7 +79,8 @@ class IperfClient:
 
 if __name__ == "__main__":
     # output_file_name = 'db0/f24-coi-ch1-unshield'
-    output_file_name = 'db0/f24-aci-ch6-1-unshield'
+    # output_file_name = 'db0/f24-aci-ch6-1-unshield'
+    output_file_name = 'db0/f24-coi-ch6-unshield'
 
     if len(sys.argv) > 1:
         output_file_name = sys.argv[1]
@@ -87,7 +88,7 @@ if __name__ == "__main__":
     # host_ip = 'localhost'
     host_ip = '192.168.0.104'
 
-    schedule_time = "21:32"
+    schedule_time = "20:13"
     while True:
         current_time = datetime.datetime.now().strftime("%H:%M")
         if current_time == schedule_time:
