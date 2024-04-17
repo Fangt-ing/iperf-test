@@ -92,8 +92,36 @@ def plot_candlestick(plotTitle, *args):
     plt.show()
 
 
-if __name__ == "__main__":
-    f24_ni_ch1_db0_shield_download = convertToDict("ch1_db0_coi_download", getDataList("output/db0/f24-coi-ch1-shield-down.xlsx"))
+def find_xlsx_files(directory):
+    json_files = []
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file.endswith('.xlsx'):
+                json_files.append(os.path.join(root, file))
+    return json_files
 
-    plot_candlestick("db0_download", f24_ni_ch1_db0_shield_download)
+
+
+if __name__ == "__main__":
+    f24_coi_ch1_db0_shield_download = convertToDict("ch1_db0_coi_download", getDataList("output/db0/f24-coi-ch1-shield-download.xlsx"))
+    f24_aci_ch1_db0_shield_download = convertToDict("ch1_db0_aci_download", getDataList("output/db0/f24-aci-ch1-shield-download.xlsx"))
+
+    # db0_download = ["db0_download"]
+    # db0_upload ={}
+    # for xlsx in find_xlsx_files('output\\db0'):
+    #     if "download" in xlsx:
+    #         fileName = xlsx.split('\\')[-1].split('.')[0].replace("f24-","")
+    #         fileName = fileName.replace("-shield-download","")
+    #         downloadData = convertToDict(fileName, getDataList(xlsx))
+    #         db0_download.append(downloadData)
+    #     elif "upload" in xlsx:
+    #         fileName = xlsx.split('\\')[-1].split('.')[0].replace("f24-","")
+    #         fileName = fileName.replace("-shield-upload","")
+    #         uploadData = convertToDict(fileName, getDataList(xlsx))
+    #         db0_upload.append(uploadData)
+
+
+
+    # plot_candlestick(db0_download[0], db0_download[1:]))
+    plot_candlestick("db0_download", f24_coi_ch1_db0_shield_download, f24_aci_ch1_db0_shield_download)
     # plot_candlestick("db0_download",f24_ni_ch1_db0_shield_download, f24_coi_ch1_db0_shield_download, f24_aci_ch1_db0_shield_download, f24_ni_ch6_db0_shield_download, f24_coi_ch6_db0_shield_download, f24_aci_ch6_db0_shield_download, f24_ni_ch11_db0_shield_download, f24_coi_ch11_db0_shield_download, f24_aci_ch11_db0_shield_download)
