@@ -82,7 +82,8 @@ if __name__ == "__main__":
     # output_file_name = 'db0/f24-coi-ch1-shield'
     # output_file_name = 'db0/f24-aci-ch1-shield'
     # output_file_name = 'db0/f24-coi-ch6-shield'
-    output_file_name = 'db0/f24-aci-ch6-shield'
+    # output_file_name = 'db0/f24-aci-ch6-shield'
+    output_file_name = 'db0/f24-coi-ch11-shield'
 
     if len(sys.argv) > 1:
         output_file_name = sys.argv[1]
