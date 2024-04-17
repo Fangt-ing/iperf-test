@@ -51,8 +51,20 @@ def json_to_excel(json_file):
     df.to_excel(output_file, index=False)
     print(f"Excel file saved: {output_file}")
 
+def find_json_files(directory):
+    json_files = []
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file.endswith('.json'):
+                json_files.append(os.path.join(root, file))
+    return json_files
+
 if __name__ == "__main__":
     # Replace with your JSON file path
-    json_file = 'output/db0/f24-coi-ch1-shield-down.json'
+    # json_file = 'output/db0/f24-coi-ch1-shield-down.json'
+    find_json_files('output')
+    for json_file in find_json_files('output'):
+        json_to_excel(json_file)
 
-    json_to_excel(json_file)
+    # json_to_excel(f24_coi_ch1_db0_shield_download)
+    # json_to_excel(f24_aci_ch1_db0_shield_download)
