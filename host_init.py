@@ -4,7 +4,7 @@ import datetime
 
 if __name__ == "__main__":
 
-    schedule_time = "21:12"
+    schedule_time = "21:21"
     python_files = ["host/host_shield.py", "host/host_unshield.py"]
 
     while True:
